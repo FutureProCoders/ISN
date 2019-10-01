@@ -111,6 +111,7 @@ def draw():
     """
     JEUX.game_over = 1
     canvas.create_text(350, 300, fill="white", font=(" ", 100), text="Égalité")
+    canvas.create_text(355, 300, fill="black", font=(" ", 100), text="Égalité")
 
 
 def gagne(joueur):
@@ -122,9 +123,11 @@ def gagne(joueur):
     print("le joueur", joueur, "a gagné")
     JEUX.game_over = 1
     if joueur == 1:
-        canvas.create_text(350, 100, fill="red", font=(" ", 50), text="le joueur 1 a gagné")
+        canvas.create_text(350, 100, fill="black", font=(" ", 50), text="le joueur 1 a gagné")
+        canvas.create_text(355, 100, fill="red", font=(" ", 50), text="le joueur 1 a gagné")
     else:
-        canvas.create_text(350, 100, fill="yellow", font=(" ", 50), text="le joueur 2 a gagné")
+        canvas.create_text(350, 100, fill="black", font=(" ", 50), text="le joueur 2 a gagné")
+        canvas.create_text(355, 100, fill="yellow", font=(" ", 50), text="le joueur 2 a gagné")
 
 
 def pointeur(event):

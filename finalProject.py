@@ -172,7 +172,7 @@ def pointeur(event):
 
 
 fenetre = Tk()
-fenetre.geometry("700x600+0+0")
+fenetre.geometry("700x600+410+50")
 fenetre.title("Puissance 4")
 canvas = Canvas(master=fenetre, width=7*CASE, height=6*CASE)
 canvas.pack()

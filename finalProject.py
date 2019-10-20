@@ -187,3 +187,5 @@ dessiner_fond(canvas, case)
 canvas.bind("<Button-1>", pointeur)
 
 JEUX = jeux()
+
+fenetre.mainloop();

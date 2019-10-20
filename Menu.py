@@ -9,14 +9,19 @@ fenetre.title("MENU")
 fenetre["background"] = "blue"
 photo = PhotoImage(file="connect4logo.png")
 
+
 # Design et actions des boutons
 def jvsj():
     fenetre.destroy()
     import finalProject
 
-bouton3 = Button(fenetre, text="Quit", relief=RAISED, cursor="circle", command=fenetre.destroy, height=2, fg="red", bg="yellow", activebackground="red", activeforeground="yellow").pack(side= RIGHT, pady=5, padx=10)
-bouton1 = Button(fenetre, text="J1 vs J2",relief=RAISED, cursor="circle", command=jvsj, height=2, fg="red", bg="yellow", activebackground="red", activeforeground="yellow").pack(side=RIGHT, pady=5, padx=5)
-bouton2 = Button(fenetre, text="J1 vs IA", relief=RAISED, cursor="circle", height=2, fg="red", bg="yellow", activebackground="red", activeforeground="yellow").pack(side=RIGHT, pady=5, padx=5)
+    
+bouton3 = Button(fenetre, text="Quit", relief=RAISED, cursor="circle", command=fenetre.destroy, height=2, fg="red", bg="yellow",\
+                 activebackground="red", activeforeground="yellow").pack(side= RIGHT, pady=5, padx=10)
+bouton1 = Button(fenetre, text="J1 vs J2",relief=RAISED, cursor="circle", command=jvsj, height=2, fg="red", bg="yellow",\
+                 activebackground="red", activeforeground="yellow").pack(side=RIGHT, pady=5, padx=5)
+bouton2 = Button(fenetre, text="J1 vs IA", relief=RAISED, cursor="circle", height=2, fg="red", bg="yellow",\
+                 activebackground="red", activeforeground="yellow").pack(side=RIGHT, pady=5, padx=5)
 
 # Positionnement des widgets
 

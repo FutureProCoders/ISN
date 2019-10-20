@@ -5,13 +5,14 @@ CASE = 100
 NB_RANGÉE = 6
 NB_COLONNE = 7
 
+
 class jeux:
     def __init__(self):
+        self.nb_tour = 0
         self.tour = 0
         self.joueur = 1
         self.tableau = numpy.zeros((NB_RANGÉE, NB_COLONNE))
         self.game_over = 0
-
 
     def afficher_tableau(self):
         """
@@ -28,7 +29,7 @@ class jeux:
         """
         return self.tableau[NB_RANGÉE - 1][colonne] == 0
 
-    def rangé_libre(self, colonne):
+    def rangée_libre(self, colonne):
         """
         Cette fonction définie sur quel rangée le pions va se placer dans la colonne choisit.
         :param colonne:
@@ -52,7 +53,6 @@ class jeux:
         else:
             couleur = "yellow"
         canvas.itemconfig(case[colonne][ligne], fill=couleur)
-
 
     def coup_de_grace(self):
         """
@@ -114,17 +114,19 @@ def draw():
     canvas.create_text(355, 300, fill="black", font=(" ", 100), text="Égalité")
 
 
-def gagne(joueur):
+def gagnant(joueur):
     """
     Cette fonction ecrit sur le canvas le joueur gagnant.
     :param joueur:
     :return:
     """
+    print(JEUX.nb_tour)
     print("le joueur", joueur, "a gagné")
     JEUX.game_over = 1
     if joueur == 1:
         canvas.create_text(350, 100, fill="black", font=(" ", 50), text="le joueur 1 a gagné")
         canvas.create_text(355, 100, fill="red", font=(" ", 50), text="le joueur 1 a gagné")
+
     else:
         canvas.create_text(350, 100, fill="black", font=(" ", 50), text="le joueur 2 a gagné")
         canvas.create_text(355, 100, fill="yellow", font=(" ", 50), text="le joueur 2 a gagné")
@@ -140,15 +142,17 @@ def pointeur(event):
     colonne = int(event.x//CASE)
     if JEUX.game_over == 0:
         if JEUX.tour == 0:
+            JEUX.nb_tour += 1
             JEUX.joueur = 1
 
             if JEUX.colonne_libre(colonne):
-                rangée = JEUX.rangé_libre(colonne)
+                rangée = JEUX.rangée_libre(colonne)
                 JEUX.placer_jetons(rangée, colonne)
                 JEUX.afficher_tableau()
 
                 if JEUX.coup_de_grace():
-                    gagne(JEUX.joueur)
+                    gagnant(JEUX.joueur)
+
             else:
                 return
 
@@ -156,12 +160,12 @@ def pointeur(event):
             JEUX.joueur = 2
 
             if JEUX.colonne_libre(colonne):
-                rangée = JEUX.rangé_libre(colonne)
+                rangée = JEUX.rangée_libre(colonne)
                 JEUX.placer_jetons(rangée, colonne)
                 JEUX.afficher_tableau()
 
                 if JEUX.coup_de_grace():
-                    gagne(JEUX.joueur)
+                    gagnant(JEUX.joueur)
             else:
                 return
 
@@ -172,7 +176,7 @@ def pointeur(event):
 
 
 fenetre = Tk()
-fenetre.geometry("700x600+410+50")
+fenetre.geometry("700x600+0+0")
 fenetre.title("Puissance 4")
 canvas = Canvas(master=fenetre, width=7*CASE, height=6*CASE)
 canvas.pack()
@@ -183,5 +187,3 @@ dessiner_fond(canvas, case)
 canvas.bind("<Button-1>", pointeur)
 
 JEUX = jeux()
-
-fenetre.mainloop();

@@ -143,7 +143,7 @@ class JEUX:
                 colonnes_libres.append(colonne)
         return colonnes_libres
 
-    def winning_move(self, piece, ancienne_colone="default"):
+    def winning_move(self, jetons, ancienne_colone="default"):
         """
         Cette fonction renvoi une colonne quand il y a 3 jetons alignés afin de gagner ou de blocker le puissance 4 de\
         l'adversaire, quand ce n'est pas le cas elle renvoit une colonne au hasard dans les colonnes disponibles si\
@@ -156,39 +156,39 @@ class JEUX:
         # Verifie les horizontales en partant de la gauche
         for c in range(NB_COLONNE - 3):
             for r in range(NB_RANGÉE):
-                if self.tableau[r][c] == piece and self.tableau[r][c + 1] == piece and self.tableau[r][c + 2] == piece\
+                if self.tableau[r][c] == jetons and self.tableau[r][c + 1] == jetons and self.tableau[r][c + 2] == jetons\
                         and self.tableau[r][c + 3] == 0:
                     return c + 3
 
         # Verifie les horizontales en partant de la droite
         for c in range(NB_COLONNE - 3):
             for r in range(NB_RANGÉE):
-                if self.tableau[r][c] == 0 and self.tableau[r][c + 1] == piece and self.tableau[r][c + 2] == piece and\
-                        self.tableau[r][c + 3] == piece:
+                if self.tableau[r][c] == 0 and self.tableau[r][c + 1] == jetons and self.tableau[r][c + 2] == jetons and\
+                        self.tableau[r][c + 3] == jetons:
                     return c
 
         # Verifie les verticales
         for c in range(NB_COLONNE):
             for r in range(NB_RANGÉE - 3):
-                if self.tableau[r][c] == piece and self.tableau[r + 1][c] == piece and self.tableau[r + 2][c] == piece\
+                if self.tableau[r][c] == jetons and self.tableau[r + 1][c] == jetons and self.tableau[r + 2][c] == jetons\
                         and self.tableau[r + 3][c] == 0:
                     return c
 
         # Verifie les diagonales croissantes
         for c in range(NB_COLONNE - 3):
             for r in range(NB_RANGÉE - 3):
-                if self.tableau[r][c] == piece and self.tableau[r + 1][c + 1] == piece and self.tableau[r + 2][c + 2]\
-                        == piece and self.tableau[r + 3][c + 3] == 0:
+                if self.tableau[r][c] == jetons and self.tableau[r + 1][c + 1] == jetons and self.tableau[r + 2][c + 2]\
+                        == jetons and self.tableau[r + 3][c + 3] == 0:
                     return c + 3
 
         # Verifie les diagonales decroissantes
         for c in range(NB_COLONNE - 3):
             for r in range(3, NB_RANGÉE):
-                if self.tableau[r][c] == 0 and self.tableau[r - 1][c + 1] == piece and self.tableau[r - 2][c + 2] ==\
-                        piece and self.tableau[r - 3][c + 3] == piece:
+                if self.tableau[r][c] == 0 and self.tableau[r - 1][c + 1] == jetons and self.tableau[r - 2][c + 2] ==\
+                        jetons and self.tableau[r - 3][c + 3] == jetons:
                     return c
 
-        if piece == 2:
+        if jetons == 2:
             return ancienne_colone
 
         elif len(self.colonnes_disponibles()) != 0:

@@ -148,7 +148,7 @@ class JEUX:
         Cette fonction renvoi une colonne quand il y a 3 jetons alignés afin de gagner ou de blocker le puissance 4 de\
         l'adversaire, quand ce n'est pas le cas elle renvoit une colonne au hasard dans les colonnes disponibles si\
         il y en a, sinon elle renvoit 'impossible' vu qu'il n'y a pas de colonnes disponibles.
-        :param piece:
+        :param jetons:
         :param ancienne_colone:
         :return:
         """

@@ -127,6 +127,8 @@ class JEUX:
         self.game_over = True
         if joueur == 1:
             self.canvas.create_text(350, 100, fill="red", font=(" ", 50), text="le joueur 1 a gagné")
+        elif self.cpu:
+            self.canvas.create_text(350, 100, fill="yellow", font=(" ", 50), text="L'ordinateur a gagné")
         else:
             self.canvas.create_text(350, 100, fill="yellow", font=(" ", 50), text="le joueur 2 a gagné")
 
